@@ -1,74 +1,142 @@
 /**
- * Dedicated styles for flip cards - these will override other styles
+ * Simple modal-style card expansion system
  */
-
-/* Basic 3D card flip system */
+/* Basic card styles */
 .flip-card {
   position: relative;
   min-height: 380px;
+  height: auto; /* Allow height to be determined by content */
   margin-bottom: 15px;
-  perspective: 1200px;
-}
-
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-}
-
-.flip-card.flipped .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
   border-radius: 8px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   overflow: hidden;
 }
 
-.flip-card-front {
-  background: rgba(255, 255, 255, 0.25);
-  z-index: 1;
-}
-
-.flip-card-back {
-  background: rgba(255, 255, 255, 0.95);
-  transform: rotateY(180deg);
-  padding: 30px;
+/* Card inner structure */
+.flip-card-inner {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
 
-/* Project image in flip cards */
+.flip-card-front, .flip-card-back {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* Front card styling */
+.flip-card-front {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 450px; /* Increased from 380px to accommodate taller images */
+}
+
+/* Project image in cards - doubled height */
 .flip-card-front .project-image {
-  height: 180px;
+  height: 360px; /* Increased from 180px (doubled) */
   overflow: hidden;
 }
 
-.flip-card-front .project-image img {
+/* Back content hidden by default */
+.flip-card-back {
+  display: none;
+  padding: 30px;
+  background: white;
+}
+
+/* Modal overlay - hidden by default */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Increase spacing for paragraphs to prevent overlap with buttons */
-.project-card p {
-  padding: 0 22px 70px !important; /* Increased bottom padding from 40px to 70px */
-  margin-bottom: 0;
+/* Active overlay */
+.modal-overlay.active {
+  display: flex;
 }
 
-/* Back card paragraph spacing */
-.flip-card-back p {
-  margin-bottom: 15px;
+/* Modal content box - increased size */
+.modal-content {
+  background: white;
+  width: 90%;
+  max-width: 900px; /* Larger max-width */
+  max-height: 80vh; /* Reduced from 90vh to give more breathing room */
+  min-height: 400px; /* Added minimum height */
+  border-radius: 8px;
+  padding: 40px; /* Increased padding from 30px */
+  position: relative;
+  overflow-y: auto;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
 }
 
-/* Clear, obvious button styles - applied to all buttons in project cards */
+/* Ensure content in modal is visible */
+.modal-content .flip-card-back {
+  display: block !important; /* Force display */
+  position: static;
+  height: auto;
+  opacity: 1;
+  pointer-events: auto;
+  background: transparent; /* Remove background to avoid double background */
+  padding: 0; /* Remove padding since the modal has padding */
+  transform: none; /* Remove any transforms */
+}
+
+/* Style modal headings */
+.modal-content h3 {
+  color: #2e7d32;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  padding: 0;
+}
+
+/* Style modal paragraphs */
+.modal-content p {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 1.05rem;
+  padding: 0 !important; /* Override any padding from project card styles */
+}
+
+/* Modal close button - more visible */
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 28px; /* Larger */
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+  background: rgba(0,0,0,0.05); /* Light background */
+  border: none;
+  width: 40px; /* Larger clickable area */
+  height: 40px; /* Larger clickable area */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  z-index: 5;
+}
+
+.modal-close:hover {
+  background: rgba(0, 0, 0, 0.1);
+  transform: rotate(90deg); /* Add rotation effect on hover */
+}
+
+/* Button styling */
 .flip-button,
 .project-links a {
   display: inline-block;
@@ -77,7 +145,7 @@
   color: #2e7d32;
   border-radius: 4px;
   font-weight: 500;
-  text-decoration: none; /* Ensure no underline by default */
+  text-decoration: none;
   cursor: pointer;
   transition: all 0.2s;
   border: 1px solid rgba(46, 125, 50, 0.2);
@@ -89,28 +157,18 @@
   background-color: rgba(46, 125, 50, 0.2);
   transform: translateY(-2px);
   box-shadow: 0 3px 8px rgba(46, 125, 50, 0.1);
-  text-decoration: none !important; /* Explicitly prevent underline on hover */
+  text-decoration: none !important;
 }
 
-/* Remove default arrow from regular links */
+/* Remove default arrow from links */
 .project-links a::after {
   content: none !important;
 }
 
-/* Back button styling */
-.flip-card-back .flip-button {
-  margin-top: 20px;
-}
-
-.flip-card-back .flip-button::before {
-  content: "←";
-  margin-right: 8px;
-}
-
-/* Project links container positioning - moved slightly lower */
+/* Links container - moved up from bottom */
 .project-links {
   position: absolute;
-  bottom: 20px; /* Increased from 15px to 20px */
+  bottom: 25px; /* Increased from 20px to 25px to move links up */
   left: 0;
   width: 100%;
   padding: 0 22px;
@@ -118,4 +176,71 @@
   gap: 12px;
   z-index: 5;
   background: transparent;
+}
+
+/* Make modal back links position relative */
+.modal-content .project-links {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  padding: 20px 0 0;
+  margin-top: 20px;
+}
+
+/* Create space for buttons at bottom of content */
+.project-card p {
+  padding: 0 22px;
+  margin-bottom: 80px !important; /* Increased from 60px to 80px */
+  color: var(--light-text);
+}
+
+/* Back button styling */
+.flip-card-back .flip-button::before,
+.modal-content .flip-button::before {
+  content: "←";
+  margin-right: 8px;
+}
+
+/* Media gallery styling for back of cards */
+.back-media-gallery {
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.gallery-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.gallery-images img {
+  width: calc(50% - 8px);
+  border-radius: 6px;
+  object-fit: cover;
+  height: 400px; /* Increased from 200px (doubled) */
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-images img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* For mobile screens, make images full width */
+@media (max-width: 600px) {
+  .gallery-images img {
+    width: 100%;
+  }
+}
+
+/* Ensure modal content displays images properly */
+.modal-content .back-media-gallery {
+  width: 100%;
+}
+
+.modal-content .gallery-images img {
+  max-height: 500px; /* Increased from 250px (doubled) */
 }
