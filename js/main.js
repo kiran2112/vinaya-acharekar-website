@@ -66,24 +66,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (textArray.length) setTimeout(type, newTextDelay + 250);
 
-    // Project filtering
+    // Enhanced project filtering with animation
     const filterButtons = document.querySelectorAll('.filter');
     const projectCards = document.querySelectorAll('.project-card');
 
+    // Make sure all projects are visible initially with smooth animation
+    projectCards.forEach(card => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    });
+
     filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove active class from all buttons
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
-            button.classList.add('active');
+        button.addEventListener('click', function() {
+            console.log('Filter clicked:', this.getAttribute('data-filter');
             
-            const filterValue = button.getAttribute('data-filter');
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const filterValue = this.getAttribute('data-filter');
+            console.log('Filter value:', filterValue);
             
             projectCards.forEach(card => {
-                if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                    card.style.display = 'block';
+                const cardCategory = card.getAttribute('data-category');
+                console.log('Card category:', cardCategory);
+                
+                if (filterValue === 'all' || filterValue === cardCategory) {
+                    card.classList.add('show');
+                    card.classList.remove('hide');
+                    setTimeout(() => {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 10);
+                    }, 10);
                 } else {
-                    card.style.display = 'none';
+                    card.classList.add('hide');
+                    card.classList.remove('show');
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300); // Match this to your CSS transition time
                 }
             });
         });
@@ -152,6 +182,32 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 800);
         });
     });
+
+    // Add video play functionality
+    const videoContainer = document.querySelector('.video-card .project-image');
+    const video = document.querySelector('.video-card .project-image video');
+    const overlay = document.querySelector('.video-overlay');
+    
+    if (videoContainer && video && overlay) {
+        videoContainer.addEventListener('click', function() {
+            if (video.paused) {
+                video.play();
+                videoContainer.classList.add('playing');
+            } else {
+                video.pause();
+                videoContainer.classList.remove('playing');
+            }
+        });
+        
+        // Show overlay when video ends or is paused
+        video.addEventListener('pause', function() {
+            videoContainer.classList.remove('playing');
+        });
+        
+        video.addEventListener('ended', function() {
+            videoContainer.classList.remove('playing');
+        });
+    }
 });
 
 // Header scroll effect
