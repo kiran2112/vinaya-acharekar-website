@@ -122,6 +122,36 @@ document.addEventListener('DOMContentLoaded', () => {
             contactForm.reset();
         });
     }
+
+    // Add bounce effect to highlighted words
+    const highlights = document.querySelectorAll('.highlight');
+    
+    highlights.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            // Remove bounce class from all elements
+            highlights.forEach(el => el.classList.remove('bounce'));
+            // Add bounce class to current element
+            element.classList.add('bounce');
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            // Keep the bounce animation until it completes
+            setTimeout(() => {
+                element.classList.remove('bounce');
+            }, 800); // Match the animation duration
+        });
+        
+        // Also trigger on touch for mobile devices
+        element.addEventListener('touchstart', () => {
+            highlights.forEach(el => el.classList.remove('bounce'));
+            element.classList.add('bounce');
+            
+            // Remove class after animation completes
+            setTimeout(() => {
+                element.classList.remove('bounce');
+            }, 800);
+        });
+    });
 });
 
 // Header scroll effect
