@@ -4,7 +4,7 @@
 /* Basic card styles */
 .flip-card {
   position: relative;
-  min-height: 380px;
+  min-height: 480px; /* Increased from 380px */
   height: auto; /* Allow height to be determined by content */
   margin-bottom: 15px;
   border-radius: 8px;
@@ -31,12 +31,12 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-height: 450px; /* Increased from 380px to accommodate taller images */
+  min-height: 480px; /* Increased from 450px */
 }
 
-/* Project image in cards - doubled height */
+/* Project image in cards - increased height */
 .flip-card-front .project-image {
-  height: 360px; /* Increased from 180px (doubled) */
+  height: 400px; /* Increased from 360px */
   overflow: hidden;
 }
 
@@ -165,10 +165,10 @@
   content: none !important;
 }
 
-/* Links container - moved up from bottom */
+/* Links container - positioned further from content */
 .project-links {
   position: absolute;
-  bottom: 25px; /* Increased from 20px to 25px to move links up */
+  bottom: 35px; /* Increased from 25px */
   left: 0;
   width: 100%;
   padding: 0 22px;
@@ -187,10 +187,10 @@
   margin-top: 20px;
 }
 
-/* Create space for buttons at bottom of content */
+/* Create more space for text content */
 .project-card p {
   padding: 0 22px;
-  margin-bottom: 80px !important; /* Increased from 60px to 80px */
+  margin-bottom: 100px !important; /* Increased from 80px */
   color: var(--light-text);
 }
 
