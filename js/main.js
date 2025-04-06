@@ -208,6 +208,27 @@ document.addEventListener('DOMContentLoaded', () => {
             // You can implement fallback behavior here
         });
     });
+
+    // Add CV button error handling
+    const cvButton = document.getElementById('cv-download-btn');
+    if (cvButton) {
+        cvButton.addEventListener('click', function(e) {
+            // Check if file exists (this does not work in all browsers for security reasons)
+            // but provides some feedback to the user
+            const cvPath = this.getAttribute('href');
+            console.log('Attempting to open CV at path:', cvPath);
+            
+            // Fallback alert in case the PDF doesn't exist or doesn't open
+            setTimeout(() => {
+                // Let the user know if there might be an issue with the CV
+                alert('If the CV file did not open, please contact me directly for a copy.');
+            }, 1500);
+        });
+    }
+
+    // REMOVE the flip card implementation from here, since it's now in flip-cards.js
+    // The flip-cards.js file handles all flip functionality
+
 });
 
 // Header scroll effect

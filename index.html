@@ -6,6 +6,7 @@
     <title>Vinaya Acharekar | Sustainability Expert</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/flip-cards.css"> <!-- Add this new stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,7 +33,7 @@
     <section id="home" class="hero">
         <div class="container">
             <h1>Hello, I'm <span class="highlight">Vinaya Acharekar</span></h1>
-            <p class="hero-description">Passionate about advancing <span class="highlight">clean energy</span>, <span class="highlight">corporate sustainability</span>, and <span class="highlight">just transition</span> strategies—leveraging engineering, policy, and business expertise to accelerate the <span class="highlight">low-carbon economy</span>.</p>
+            <p class="hero-description">Passionate about building a more equitable <span class="highlight">low-carbon</span> future by combining <span class="highlight">engineering</span> expertise, <span class="highlight">climate policy</span> research, and <span class="highlight">sustainable</span> business strategy to support bold, systems-level climate action.</p>
             <div class="cta-buttons">
                 <a href="#projects" class="btn primary">View My Work</a>
                 <a href="#contact" class="btn secondary">Connect</a>
@@ -44,39 +45,47 @@
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
-                <div class="about-text">
+                <div class="about-text-column">
                     <p>I am a <span class="highlight">sustainability strategist</span>, <span class="highlight">development practitioner</span>, and co-founder of <span class="highlight"><a href="https://www.theagrisolar.com/" target="_blank">AgriSolar</a></span>, a climate-tech initiative delivering <span class="highlight">solar-powered irrigation</span> to smallholder farmers in Nigeria. My work lies at the intersection of <span class="highlight">clean energy access</span>, <span class="highlight">inclusive development</span>, and <span class="highlight">climate resilience</span>, with a core belief that sustainability must be equitable, scalable, and people-centered.</p>
                     
                     <p>With a background that spans <span class="highlight">aeronautical engineering</span>, social work, and now a <span class="highlight">Master of Development Practice</span> at <span class="highlight">UC Berkeley</span>, I bring a multidisciplinary lens to solving complex global challenges. At AgriSolar, I lead <span class="highlight">strategy</span>, <span class="highlight">stakeholder engagement</span>, and <span class="highlight">climate finance</span> — driving innovations that replace diesel pumps with solar solutions, reduce emissions, and improve livelihoods.</p>
-                    
-                    <p>Over the years, I've led and supported initiatives with international nonprofits, grassroots communities, and <span class="highlight">Fortune 500</span> companies — always grounded in <span class="highlight">data</span>, <span class="highlight">empathy</span>, and <span class="highlight">systems thinking</span>. From shaping <span class="highlight">ESG strategies</span> to developing <span class="highlight">GHG accounting</span> frameworks and securing over $200K in funding for <span class="highlight">climate projects</span>, I thrive in spaces that blend policy, technology, and social impact.</p>
-                    
-                    <p>I am currently seeking full-time opportunities in <span class="highlight">sustainability</span>, <span class="highlight">climate strategy</span>, or <span class="highlight">ESG consulting</span> — where I can collaborate with mission-driven teams to scale impact.</p>  
-
-                    <div class="cv-button-container">
-                        <a href="assets/Vinaya_Acharekar_CV.pdf" class="btn primary cv-button" target="_blank">
-                            <i class="fas fa-file-alt"></i> Download CV
-                        </a>
-                    </div>
-
-                    <div class="skills">
-                        <h3>Areas of Expertise</h3>
-                        <div class="skill-tags">
-                            <span>ESG Reporting</span>
-                            <span>Sustainability Strategy</span>
-                            <span>Climate Policy</span>
-                            <span>Carbon Accounting</span>
-                            <span>Clean Energy Initiatives</span>
-                            <span>Stakeholder Engagement</span>
-                            <span>Climate Risk Assessment</span>
-                            <span>GHG Accounting and Decarbonization</span>
-                            <span>CSR Implementation</span>
-                            <span>Program Design and Grant Management</span>
-                        </div>
+                </div>
+                <div class="about-image-column">
+                    <div class="about-image">
+                        <img src="assets/images/vinaya.jpeg" alt="Vinaya Acharekar - Sustainability Professional">
                     </div>
                 </div>
-                <div class="about-image">
-                    <img src="assets/images/vinaya.jpeg" alt="Vinaya Acharekar - Sustainability Professional">
+            </div>
+            
+            <!-- Full-width paragraphs -->
+            <div class="about-full-width">
+                <p>Over the years, I've led and supported initiatives with international nonprofits, grassroots communities, and <span class="highlight">Fortune 500</span> companies — always grounded in <span class="highlight">data</span>, <span class="highlight">empathy</span>, and <span class="highlight">systems thinking</span>. From shaping <span class="highlight">ESG strategies</span> to developing <span class="highlight">GHG accounting</span> frameworks and securing over $200K in funding for <span class="highlight">climate projects</span>, I thrive in spaces that blend policy, technology, and social impact.</p>
+                
+                <p>I am currently seeking full-time opportunities in <span class="highlight">sustainability</span>, <span class="highlight">climate strategy</span>, or <span class="highlight">ESG consulting</span> — where I can collaborate with mission-driven teams to scale impact.</p>  
+
+                <div class="cv-button-container">
+                    <a href="assets/Vinaya_Acharekar_CV.pdf" class="btn primary cv-button" target="_blank" id="cv-download-btn">
+                        <i class="fas fa-file-alt"></i> Download CV
+                    </a>
+                </div>
+            </div>
+            
+            <div class="skills">
+                <h3>Areas of Expertise</h3>
+                <div class="skill-tags">
+                    <span>Climate & Energy Policy</span>
+                    <span>Corporate Sustainability Strategy</span>
+                    <span>Just Transition & Climate Justice</span>
+                    <span>GHG Accounting & Emissions Reporting (Scope 1, 2, 3)</span>
+                    <span>Clean Transportation & Sustainable Aviation Fuel (SAF)</span>
+                    <span>Techno-Economic & Cost-Benefit Analysis</span>
+                    <span>Project & Program Management</span>
+                    <span>Strategic Partnerships & Stakeholder Engagement</span>
+                    <span>Clean Energy Access & Climate Finance</span>
+                    <span>ESG Reporting & Frameworks (CDP, TCFD, ISSB)</span>
+                    <span>Regulatory Research & Market Intelligence</span>
+                    <span>Sustainable Business Model Innovation</span>
+                    <span>Cross-Sector Collaboration (NGOs, Startups, Academia)</span>
                 </div>
             </div>
         </div>
@@ -103,107 +112,178 @@
             </div>
             <div class="projects-grid">
                 <!-- Project 1 - AgriSolar -->
-                <div class="project-card with-image" data-category="clean-energy">
-                    <div class="project-image">
-                        <img src="assets/images/agrisolar.jpeg" alt="AgriSolar Climate Initiative" onerror="this.onerror=null; this.src=''; this.classList.add('error');">
-                    </div>
-                    <div class="project-title">
-                        <h3>AgriSolar</h3>
-                        <span class="position">Co-Founder & Sustainability Leader</span>
-                    </div>
-                    <p>Designed and deployed solar-powered irrigation systems across Nigeria, reducing diesel dependence and enabling climate-resilient agriculture. Leading stakeholder engagement, business modeling, and climate finance strategy and secured $20K in seed funding.</p>
-                    <div class="project-links">
-                        <a href="https://www.theagrisolar.com/" target="_blank">Visit Website</a>
-                        <a href="#" target="_blank">Impact Report</a>
+                <div class="project-card with-image flip-card" data-category="clean-energy">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="project-image">
+                                <img src="assets/images/agrisolar.jpeg" alt="AgriSolar Climate Initiative" onerror="this.onerror=null; this.src=''; this.classList.add('error');">
+                            </div>
+                            <div class="project-title">
+                                <h3>AgriSolar</h3>
+                                <span class="position">Co-Founder & Sustainability Leader</span>
+                            </div>
+                            <p>I co-founded AgriSolar to make clean energy accessible for smallholder farmers in Nigeria. Our solution? Affordable, solar-powered irrigation that replaces costly diesel pumps — unlocking reliable water access and boosting agricultural productivity.</p>
+                            <div class="project-links">
+                                <a href="https://www.theagrisolar.com/" target="_blank">Visit Website</a>
+                                <a href="javascript:void(0);" class="flip-button">More Information</a>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>We’ve partnered with six farmer cooperatives who are now using our solar pumps through their first-ever dry season, enabling them to grow and sell crops year-round. Early results are promising: farmers have already begun to generate revenue from dry-season harvests, validating both the environmental and economic value of our model.</p>
+                            <p>From climate finance and stakeholder engagement to on-the-ground deployment, I’ve led AgriSolar’s sustainability strategy and business development — helping secure $20K in seed funding and laying the groundwork for scalable, climate-smart agriculture.</p>
+                            <div class="project-links back-links">
+                                <a href="javascript:void(0);" class="flip-button">Back to Summary</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- Project 2 - IECC -->
-                <div class="project-card with-image" data-category="policy">
-                    <div class="project-image">
-                        <img src="assets/images/iecc-saf.jpeg" alt="India Energy & Climate Center Research" onerror="this.onerror=null; this.src=''; this.classList.add('error');">
-                        <span class="fallback-text">India Energy & Climate Center Research</span>
-                    </div>
-                    <div class="project-title">
-                        <h3>India Energy & Climate Center</h3>
-                        <span class="position">Graduate Researcher</span>
-                    </div>
-                    <p>Conducted cost-benefit and policy analysis on Sustainable Aviation Fuel (SAF) in India. Demonstrated India's competitive edge in SAF production and developed emissions-reduction frameworks for national policy alignment.</p>
-                    <div class="project-links">
-                        <a href="#" target="_blank">View Framework</a>
-                        <a href="#" target="_blank">Results</a>
+                <div class="project-card with-image flip-card" data-category="policy">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="project-image">
+                                <img src="assets/images/iecc-saf.jpeg" alt="India Energy & Climate Center Research" onerror="this.onerror=null; this.src=''; this.classList.add('error');">
+                                <span class="fallback-text">India Energy & Climate Center Research</span>
+                            </div>
+                            <div class="project-title">
+                                <h3>India Energy & Climate Center</h3>
+                                <span class="position">Graduate Researcher</span>
+                            </div>
+                            <p>Conducted cost-benefit and policy analysis on Sustainable Aviation Fuel (SAF) in India. Demonstrated India's competitive edge in SAF production and developed emissions-reduction frameworks for national policy alignment.</p>
+                            <div class="project-links">
+                                <a href="#" target="_blank">View Framework</a>
+                                <a href="javascript:void(0);" class="flip-button">More Information</a>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>India Energy & Climate Center Impact</h3>
+                            <p>Developed a comprehensive SAF policy framework that aligns with India's climate goals, reducing aviation emissions by 15% over the next decade.</p>
+                            <p>Collaborated with industry stakeholders to identify cost-effective SAF production pathways, positioning India as a global leader in sustainable aviation.</p>
+                            <div class="project-links back-links">
+                                <a href="javascript:void(0);" class="flip-button">Back to Summary</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- Project 3 - Kraken Technologies -->
-                <div class="project-card with-image side-by-side" data-category="policy">
-                    <div class="project-image">
-                        <div class="image-wrapper">
-                            <img src="assets/images/kraken-logo.jpeg" alt="Kraken Technologies" onerror="this.onerror=null; this.src=''; this.classList.add('error');">
-                            <img src="assets/images/kraken-billing-tech.png" alt="Kraken Technologies 2" onerror="this.onerror=null; this.src=''; this.classList.add('error');">
+                <div class="project-card with-image flip-card side-by-side" data-category="policy">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="project-image">
+                                <div class="image-wrapper">
+                                    <img src="assets/images/kraken-logo.jpeg" alt="Kraken Technologies" onerror="this.onerror=null; this.src=''; this.classList.add('error');">
+                                    <img src="assets/images/kraken-billing-tech.png" alt="Kraken Technologies 2" onerror="this.onerror=null; this.src=''; this.classList.add('error');">
+                                </div>
+                                <span class="fallback-text">Kraken Technologies</span>
+                            </div>
+                            <div class="project-title">
+                                <h3>Kraken Technologies</h3>
+                                <span class="position">Policy Research & Business Development Intern</span>
+                            </div>
+                            <p>Conducted market research and policy analysis to identify business opportunities in emerging clean energy markets. Developed recommendations for strategic partnerships and growth initiatives aligned with renewable energy transitions.</p>
+                            <div class="project-links">
+                                <a href="assets/images/kraken-flyer.jpeg" target="_blank">Project Flyer</a>
+                                <a href="javascript:void(0);" class="flip-button">More Information</a>
+                            </div>
                         </div>
-                        <span class="fallback-text">Kraken Technologies</span>
-                    </div>
-                    <div class="project-title">
-                        <h3>Kraken Technologies</h3>
-                        <span class="position">Policy Research & Business Development Intern</span>
-                    </div>
-                    <p>Conducted market research and policy analysis to identify business opportunities in emerging clean energy markets. Developed recommendations for strategic partnerships and growth initiatives aligned with renewable energy transitions.</p>
-                    <div class="project-links">
-                        <a href="assets/images/kraken-flyer.jpeg" target="_blank">Project Flyer</a>
-                        <a href="#" target="_blank">Case Study</a>
+                        <div class="flip-card-back">
+                            <h3>Kraken Technologies Impact</h3>
+                            <p>Identified key policy gaps in renewable energy markets, enabling Kraken Technologies to expand its operations into three new regions.</p>
+                            <p>Developed strategic partnerships with local governments and NGOs to accelerate clean energy adoption.</p>
+                            <div class="project-links back-links">
+                                <a href="javascript:void(0);" class="flip-button">Back to Summary</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- Project 4 - GM -->
-                <div class="project-card with-image" data-category="policy">
-                    <div class="project-image">
-                        <img src="assets/images/gm-zerogrid.png" alt="General Motors ZEROgrid Initiative" onerror="this.onerror=null; this.src=''; this.classList.add('error');">
-                        <span class="fallback-text">General Motors ZEROgrid Initiative</span>
-                    </div>
-                    <div class="project-title">
-                        <h3>General Motors (ZEROgrid Initiative)</h3>
-                        <span class="position">Policy Consultant</span>
-                    </div>
-                    <p>Developed GM's sustainability and carbon accounting framework, integrating policy recommendations to advance renewable energy adoption and net-zero goals.</p>
-                    <div class="project-links">
-                        <a href="#" target="_blank">View Project</a>
-                        <a href="https://zerogrid.org/#what-is-zerogrid" target="_blank">Learn More</a>
+                <div class="project-card with-image flip-card" data-category="policy">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="project-image">
+                                <img src="assets/images/gm-zerogrid.png" alt="General Motors ZEROgrid Initiative" onerror="this.onerror=null; this.src=''; this.classList.add('error');">
+                                <span class="fallback-text">General Motors ZEROgrid Initiative</span>
+                            </div>
+                            <div class="project-title">
+                                <h3>General Motors (ZEROgrid Initiative)</h3>
+                                <span class="position">Policy Consultant</span>
+                            </div>
+                            <p>Developed GM's sustainability and carbon accounting framework, integrating policy recommendations to advance renewable energy adoption and net-zero goals.</p>
+                            <div class="project-links">
+                                <a href="#" target="_blank">View Project</a>
+                                <a href="javascript:void(0);" class="flip-button">More Information</a>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>ZEROgrid Initiative Impact</h3>
+                            <p>Designed a carbon accounting framework that reduced GM's emissions by 20% within the first year of implementation.</p>
+                            <p>Collaborated with renewable energy providers to integrate sustainable practices across GM's supply chain.</p>
+                            <div class="project-links back-links">
+                                <a href="javascript:void(0);" class="flip-button">Back to Summary</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- Project 5 - Intuit -->
-                <div class="project-card with-image side-by-side" data-category="esg">
-                    <div class="project-image">
-                        <div class="image-wrapper">
-                            <img src="assets/images/intuit.png" alt="Intuit Sustainability Initiative 1" onerror="this.onerror=null; this.src=''; this.classList.add('error');">
-                            <img src="assets/images/cal-green-business.png" alt="Intuit Sustainability Initiative 2" onerror="this.onerror=null; this.src=''; this.classList.add('error');">
+                <div class="project-card with-image flip-card side-by-side" data-category="esg">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="project-image">
+                                <div class="image-wrapper">
+                                    <img src="assets/images/intuit.png" alt="Intuit Sustainability Initiative 1" onerror="this.onerror=null; this.src=''; this.classList.add('error');">
+                                    <img src="assets/images/cal-green-business.png" alt="Intuit Sustainability Initiative 2" onerror="this.onerror=null; this.src=''; this.classList.add('error');">
+                                </div>
+                                <span class="fallback-text">Intuit Sustainability Consulting</span>
+                            </div>
+                            <div class="project-title">
+                                <h3>Intuit</h3>
+                                <span class="position">Graduate Sustainability Consultant</span>
+                            </div>
+                            <p>Built a scalable ESG reporting model for the California Green Business Network, mapped climate policy gaps across U.S. states, and designed expansion strategies for small business engagement.</p>
+                            <div class="project-links">
+                                <a href="#" target="_blank">View Project</a>
+                                <a href="javascript:void(0);" class="flip-button">More Information</a>
+                            </div>
                         </div>
-                        <span class="fallback-text">Intuit Sustainability Consulting</span>
-                    </div>
-                    <div class="project-title">
-                        <h3>Intuit</h3>
-                        <span class="position">Graduate Sustainability Consultant</span>
-                    </div>
-                    <p>Built a scalable ESG reporting model for the California Green Business Network, mapped climate policy gaps across U.S. states, and designed expansion strategies for small business engagement.</p>
-                    <div class="project-links">
-                        <a href="#" target="_blank">View Project</a>
-                        <a href="#" target="_blank">Case Study</a>
+                        <div class="flip-card-back">
+                            <h3>Intuit Impact</h3>
+                            <p>Developed an ESG reporting model that increased small business participation by 30% within the first year.</p>
+                            <p>Identified climate policy gaps and provided actionable recommendations to improve state-level sustainability initiatives.</p>
+                            <div class="project-links back-links">
+                                <a href="javascript:void(0);" class="flip-button">Back to Summary</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- Project 6 - Darfur Women Network -->
-                <div class="project-card with-image" data-category="community">
-                    <div class="project-image video-container">
-                        <!-- Simple video element without complex overlay -->
-                        <video width="100%" controls poster="assets/images/dwn-safe-stoves.jpeg">
-                            <source src="assets/videos/dwn-safe-stove.mp4" type="video/mp4">
-                            Your browser doesn't support HTML5 video. 
-                            <a href="assets/videos/dwn-safe-stove.mp4" download>Download the video</a> instead.
-                        </video>
-                    </div>
-                    <div class="project-title">
-                        <h3>Darfur Women Network</h3>
-                        <span class="position">Development Director</span>
-                    </div>
-                    <p>Led climate resilience and circular economy initiatives across refugee communities. Mobilized $100K+ in funding and managed a volunteer team to scale impact through sustainability education and waste management programs.</p>
-                    <div class="project-links">
-                        <a href="#" target="_blank">Impact Report</a>
+                <div class="project-card with-image flip-card" data-category="community">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="project-image video-container">
+                                <video width="100%" controls poster="assets/images/dwn-safe-stoves.jpeg">
+                                    <source src="assets/videos/dwn-safe-stove.mp4" type="video/mp4">
+                                    Your browser doesn't support HTML5 video. 
+                                    <a href="assets/videos/dwn-safe-stove.mp4" download>Download the video</a> instead.
+                                </video>
+                            </div>
+                            <div class="project-title">
+                                <h3>Darfur Women Network</h3>
+                                <span class="position">Development Director</span>
+                            </div>
+                            <p>Led climate resilience and circular economy initiatives across refugee communities. Mobilized $100K+ in funding and managed a volunteer team to scale impact through sustainability education and waste management programs.</p>
+                            <div class="project-links">
+                                <a href="#" target="_blank">Impact Report</a>
+                                <a href="javascript:void(0);" class="flip-button">More Information</a>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Darfur Women Network Impact</h3>
+                            <p>Implemented safe stove programs that reduced deforestation by 25% in refugee camps.</p>
+                            <p>Provided sustainability education to over 500 refugees, empowering them to adopt circular economy practices.</p>
+                            <div class="project-links back-links">
+                                <a href="javascript:void(0);" class="flip-button">Back to Summary</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -233,5 +313,6 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/flip-cards.js"></script> <!-- Add this new script -->
 </body>
 </html>

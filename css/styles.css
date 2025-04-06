@@ -174,14 +174,16 @@ header.sticky {
   position: relative;
   display: flex;
   align-items: center;
+  padding-left: 10px; /* Add some padding to the left of the entire logo */
 }
 
 .logo::before {
-  content: '♦';
-  font-size: 0.8rem;
-  margin-right: 8px;
-  transform: rotate(45deg);
-  display: inline-block;
+  content: '\f06c'; /* FontAwesome leaf icon instead of the diamond (♦) */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-size: 1.2rem; /* Slightly larger than the diamond for better visibility */
+  margin-right: 16px; /* Increased from 10px to create more space between icon and text */
+  color: var(--primary-color); /* Ensure the leaf is green */
 }
 
 .nav-links {
@@ -411,6 +413,61 @@ header.sticky {
   z-index: 2;
 }
 
+/* Updated About section layout */
+.about-content {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 60px;
+  align-items: start; /* Changed from center to align at the top */
+  margin-bottom: 40px; /* Add space between the grid and full-width content */
+}
+
+/* Renamed classes for clarity */
+.about-text-column p {
+  margin-bottom: 25px;
+  font-size: 1.05rem;
+}
+
+/* New full-width section for paragraphs 3 and 4 */
+.about-full-width {
+  width: 100%;
+  margin-bottom: 40px; /* Space before the skills section */
+}
+
+.about-full-width p {
+  margin-bottom: 25px;
+  font-size: 1.05rem;
+}
+
+/* Center the CV button in the full width layout */
+.about-full-width .cv-button-container {
+  text-align: center;
+  margin: 30px 0;
+}
+
+/* Responsive adjustments for the new layout */
+@media (max-width: 992px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .about-image-column {
+    order: -1; /* Makes the image appear before the text on mobile */
+  }
+  
+  .about-image {
+    max-width: 60%;
+    margin: 0 auto 20px;
+  }
+  
+  /* Adjust CV button for smaller screens */
+  .about-full-width .cv-button-container {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 .about-content {
   display: grid;
   grid-template-columns: 3fr 2fr;
@@ -421,6 +478,41 @@ header.sticky {
 .about-text p {
   margin-bottom: 25px;
   font-size: 1.05rem;
+}
+
+/* Update skills section to appear below the two-column layout */
+.skills {
+  margin-top: 60px; /* Increased top margin for separation from the grid */
+  width: 100%;
+  text-align: center; /* Center align the entire section */
+  position: relative;
+}
+
+.skills h3 {
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  color: var(--accent-color-2);
+  position: relative;
+  display: inline-block;
+}
+
+.skills h3::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-color-2);
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center; /* Center the skill tags */
+  max-width: 900px; /* Control the maximum width */
+  margin: 0 auto; /* Center the container */
 }
 
 .skills {
@@ -598,32 +690,184 @@ header.sticky {
   gap: 35px;
 }
 
+/* Updated Project Card Layout - Split into Image and Content sections */
 .project-card {
-  background: rgba(255, 255, 255, 0.25); /* Changed from solid white to 85% opacity */
+  background: rgba(255, 255, 255, 0.25);
   border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--shadow);
-  transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
-  opacity: 1;
-  transform: translateY(0);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
   border: 1px solid rgba(0, 0, 0, 0.05);
-  backdrop-filter: blur(2px); /* Optional: adds a slight blur effect behind the card */
+  backdrop-filter: blur(2px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
-.project-card.hide {
-  opacity: 0;
-  transform: translateY(20px);
+/* Fixed height image container */
+.project-card .project-image {
+  height: 180px; /* Reduced from 200px */
+  width: 100%;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.project-card.show {
-  opacity: 1;
-  transform: translateY(0);
+/* Image styling to handle different aspect ratios */
+.project-card.with-image .project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover ensures the container is filled */
+  object-position: center;
+  transition: transform 0.3s ease;
 }
 
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-  background: rgba(255, 255, 255, 0.95); /* Increase opacity slightly when hovering */
+/* Side-by-side images with fixed height */
+.project-card.side-by-side .image-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.project-card.side-by-side .image-wrapper img {
+  width: 48%;
+  height: 100%;
+  object-fit: cover;
+  padding: 8px;
+  transition: transform 0.3s ease;
+}
+
+/* Content section with reduced height */
+.project-content {
+  padding: 15px; /* Reduced from 20px */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Title styling in content section */
+.project-title {
+  margin-bottom: 8px; /* Reduced from 12px */
+  padding: 0;
+}
+
+.project-title h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.4rem;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.project-title .position {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--accent-color-2);
+  letter-spacing: 0.3px;
+}
+
+/* Paragraph text in content section - reduce bottom padding */
+.project-card p {
+  padding: 0 22px 40px; /* Reduced from 70px to 40px */
+  color: var(--light-text);
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Links at bottom of content section - reduce space */
+.project-links {
+  position: absolute;
+  bottom: 10px; /* Reduced from 20px */
+  left: 0;
+  width: 100%;
+  padding: 0 22px;
+  display: flex;
+  gap: 20px;
+  z-index: 5;
+}
+
+/* Updated Flip Card Structure */
+.flip-card {
+  position: relative;
+  min-height: 380px;
+  margin-bottom: 15px;
+  perspective: 1000px; /* 3D effect */
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+/* Add more specificity to ensure this rule is applied */
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.flip-card-front {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.flip-card-back {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: var(--text-color);
+  transform: rotateY(180deg);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style for flip button */
+.flip-button {
+  cursor: pointer;
+  color: var(--primary-color);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.flip-button:hover {
+  text-decoration: underline;
+}
+
+/* Fixed height for video containers */
+.flip-card .video-container {
+  height: 180px; /* Match the image height */
+  padding-bottom: 0;
+  position: relative;
+}
+
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Project image styles - consolidated into one class */
@@ -637,13 +881,6 @@ header.sticky {
   object-position: center;
   margin: 0 auto;
   padding: 10px;
-}
-
-.project-card.with-image .project-image {
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 /* Fallback text handling for project cards with images */
@@ -689,9 +926,11 @@ header.sticky {
 
 /* Update the paragraph style to account for new title structure */
 .project-card p {
-  padding: 0 22px 15px;
+  padding: 0 22px 40px; /* Ensure consistent 40px padding at bottom */
   color: var(--light-text);
   margin-top: 0;
+  position: relative; /* Add positioning context */
+  z-index: 1; /* Ensure text appears above other elements */
 }
 
 .project-card h3 {
@@ -700,15 +939,16 @@ header.sticky {
   color: var(--accent-color-2);
 }
 
-.project-card p {
-  padding: 0 22px 22px;
-  color: var(--light-text);
-}
-
 .project-links {
-  padding: 0 22px 22px;
+  position: absolute;
+  bottom: 10px; /* Reduced from 22px */
+  left: 0;
+  width: 100%;
+  padding: 0 22px;
   display: flex;
   gap: 20px;
+  z-index: 5;
+  background: transparent; /* Ensure background doesn't cover text */
 }
 
 .project-links a {
@@ -931,6 +1171,105 @@ header.sticky {
   pointer-events: auto;
 }
 
+/* Improved Flip Card Functionality */
+.flip-card {
+  perspective: 1000px; /* For 3D effect */
+  height: auto; /* Allow cards to adjust to content */
+  min-height: 380px; /* Reduced from 550px */
+  margin-bottom: 15px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: var(--border-radius);
+  overflow: visible; /* Changed from hidden to ensure text is visible */
+}
+
+.flip-card-front {
+  background: rgba(255, 255, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+.flip-card-back {
+  background: rgba(255, 255, 255, 0.95);
+  transform: rotateY(180deg);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.flip-card-back h3 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  padding: 0;
+  font-size: 1.4rem;
+}
+
+.flip-card-back p {
+  margin-bottom: 15px;
+  color: var(--light-text);
+  padding: 0;
+}
+
+/* Fix padding for paragraphs on cards */
+.project-card p {
+  padding: 0 22px 40px; /* Ensure consistent 40px padding at bottom */
+  color: var(--light-text);
+  margin-top: 0;
+  position: relative; /* Add positioning context */
+  z-index: 1; /* Ensure text appears above other elements */
+}
+
+/* Position project links at the bottom with proper spacing */
+.project-links {
+  position: absolute;
+  bottom: 10px; /* Reduced from 22px */
+  left: 0;
+  width: 100%;
+  padding: 0 22px;
+  display: flex;
+  gap: 20px;
+  z-index: 5;
+  background: transparent; /* Ensure background doesn't cover text */
+}
+
+.back-links {
+  margin-top: auto; /* Push links to bottom of card */
+  text-align: center;
+}
+
+/* Fix flip button cursor and styling */
+.flip-button {
+  cursor: pointer;
+}
+
+.flip-button:hover {
+  text-decoration: underline;
+}
+
+/* Video container fixes for flip cards */
+.flip-card .video-container {
+  height: 180px; /* Match the image height */
+  padding-bottom: 0;
+}
+
 /* Updated Contact Section with water ripple effect */
 .contact {
   background-color: var(--secondary-color);
@@ -1076,6 +1415,11 @@ footer .container {
   
   .hero h1 {
     font-size: 3.2rem;
+  }
+  
+  /* Keep the skills section centered and properly spaced on smaller screens */
+  .skills {
+    margin-top: 40px;
   }
 }
 
