@@ -897,13 +897,16 @@ header.sticky {
   position: relative;
   cursor: pointer;
   overflow: hidden;
+  background: #000; /* Dark background makes video edges less jarring */
+  aspect-ratio: 16/9; /* Common video aspect ratio */
 }
 
 .video-card .project-image video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* Changed from cover to avoid cropping */
   transition: var(--transition);
+  z-index: 1; /* Ensure video is above background but below overlay */
 }
 
 .video-overlay {
@@ -919,9 +922,16 @@ header.sticky {
   align-items: center;
   transition: var(--transition);
   opacity: 1;
+  z-index: 2; /* Place overlay above video */
 }
 
-.video-card .project-image:hover .video-overlay {
+/* Ensure overlay doesn't interfere with video controls when playing */
+.video-card .project-image.playing .video-overlay {
+  opacity: 0;
+  pointer-events: none; /* Critical to prevent blocking video interaction */
+}
+
+/.video-card .project-image:hover .video-overlay {
   background: rgba(0, 0, 0, 0.15);
 }
 
