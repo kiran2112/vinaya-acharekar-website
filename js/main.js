@@ -184,86 +184,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Improved video functionality
-    const videoContainer = document.querySelector('.video-card .project-image');
-    const video = document.querySelector('#darfur-video');
-    const overlay = document.querySelector('.video-overlay');
+    const projectVideos = document.querySelectorAll('video');
     
-    if (videoContainer && video && overlay) {
-        // Debug the video element
-        console.log('Video element found:', video);
-        
-        // Check if video can be played
+    projectVideos.forEach(video => {
+        // Log when video can play
         video.addEventListener('canplay', function() {
-            console.log('Video can be played');
+            console.log('Video ready to play:', this);
         });
         
-        // Log any errors
+        // Log any video errors
         video.addEventListener('error', function(e) {
             console.error('Video error:', e);
-            let errorMsg = '';
-            
-            switch (video.error.code) {
-                case 1: errorMsg = 'Video loading aborted'; break;
-                case 2: errorMsg = 'Network error'; break;
-                case 3: errorMsg = 'Video decoding failed'; break;
-                case 4: errorMsg = 'Video not supported'; break;
-                default: errorMsg = 'Unknown error';
-            }
-            
-            console.error('Error details:', errorMsg);
-            
-            // Show a message in the overlay
-            const playText = document.querySelector('.play-text');
-            if (playText) {
-                playText.textContent = 'Video Error: ' + errorMsg;
-            }
+            console.error('Video source:', this.querySelector('source').src);
         });
-        
-        // Handle overlay click to play/pause
-        overlay.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevent double triggering
-            try {
-                if (video.paused) {
-                    const playPromise = video.play();
-                    
-                    if (playPromise !== undefined) {
-                        playPromise
-                            .then(_ => {
-                                // Playback started successfully
-                                videoContainer.classList.add('playing');
-                                console.log('Video playback started');
-                            })
-                            .catch(error => {
-                                // Auto-play was prevented
-                                console.error('Playback error:', error);
-                            });
-                    }
-                } else {
-                    video.pause();
-                    videoContainer.classList.remove('playing');
-                }
-            } catch (err) {
-                console.error('Video interaction error:', err);
-            }
-        });
-        
-        // Show overlay when video ends or is paused
-        video.addEventListener('pause', function() {
-            videoContainer.classList.remove('playing');
-        });
-        
-        video.addEventListener('ended', function() {
-            videoContainer.classList.remove('playing');
-            video.currentTime = 0; // Reset to beginning
-            videoContainer.classList.remove('playing');
-        });
-    } else {
-        console.error('Video elements not found:', { 
-            container: videoContainer, 
-            video: video, 
-            overlay: overlay 
-        });
-    }
+    });
 
     // Check all images on page load to ensure they're loading correctly
     const allImages = document.querySelectorAll('img');

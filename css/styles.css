@@ -892,71 +892,43 @@ header.sticky {
   }
 }
 
-/* Video card styling */
-.video-card .project-image {
+/* Simplified video styling */
+.video-container {
   position: relative;
-  cursor: pointer;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
   overflow: hidden;
-  background: #000; /* Dark background makes video edges less jarring */
-  aspect-ratio: 16/9; /* Common video aspect ratio */
+  background: #000;
 }
 
-.video-card .project-image video {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Changed from cover to avoid cropping */
-  transition: var(--transition);
-  z-index: 1; /* Ensure video is above background but below overlay */
-}
-
-.video-overlay {
+.video-container video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  object-fit: contain;
+}
+
+.download-video {
+  display: inline-flex;
   align-items: center;
-  transition: var(--transition);
+}
+
+.download-video::before {
+  content: '\f019'; /* Download icon */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  margin-right: 5px;
+}
+
+/* Remove all the previous video-card styling that might interfere */
+.video-card, .video-overlay, .play-icon, .play-text {
+  /* Reset any styles that might interfere */
+  background: transparent;
+  position: static;
   opacity: 1;
-  z-index: 2; /* Place overlay above video */
-}
-
-/* Ensure overlay doesn't interfere with video controls when playing */
-.video-card .project-image.playing .video-overlay {
-  opacity: 0;
-  pointer-events: none; /* Critical to prevent blocking video interaction */
-}
-
-/.video-card .project-image:hover .video-overlay {
-  background: rgba(0, 0, 0, 0.15);
-}
-
-.video-card .project-image.playing .video-overlay {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.play-icon i {
-  color: white;
-  font-size: 3rem;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-  transition: transform 0.3s ease;
-}
-
-.play-text {
-  color: white;
-  margin-top: 10px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
-}
-
-.video-card .project-image:hover .play-icon i {
-  transform: scale(1.1);
+  pointer-events: auto;
 }
 
 /* Updated Contact Section with water ripple effect */
