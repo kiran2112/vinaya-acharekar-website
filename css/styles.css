@@ -965,9 +965,11 @@ header.sticky {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 40px; /* Increased from 30px */
-  margin-bottom: 50px; /* Increased from 40px */
+  gap: 40px;
+  margin-bottom: 0; /* Updated from 50px since there's no form below */
   width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .contact-item {
@@ -976,12 +978,13 @@ header.sticky {
   text-decoration: none;
   color: var(--text-color);
   transition: var(--transition);
-  padding: 12px 20px; /* Increased padding */
+  padding: 18px 30px; /* Increased padding for better visibility */
   border-radius: var(--border-radius);
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(4px);
-  min-width: 200px; /* Ensure minimum width */
-  justify-content: center; /* Center the content */
+  min-width: 250px; /* Slightly wider */
+  justify-content: center;
+  margin: 10px;
 }
 
 .contact-item:hover {
@@ -1005,42 +1008,6 @@ header.sticky {
 
 .contact-item span {
   font-weight: 500;
-}
-
-.contact-form {
-  width: 100%;
-  max-width: 850px; /* Increased from 700px */
-  background: white;
-  padding: 40px; /* Increased from 30px */
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.form-group {
-  margin-bottom: 25px; /* Increased from 22px */
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 16px 20px; /* Increased padding */
-  font-size: 1.05rem; /* Slightly larger font */
-}
-
-.form-group textarea {
-  min-height: 180px; /* Increased from 160px */
-}
-
-/* Add extra space for the submit button */
-.contact-form .btn {
-  margin-top: 15px;
-  padding: 16px 36px; /* Larger button */
-}
-
-/* Remove old contact content styles */
-.contact-content {
-  display: none;
 }
 
 /* Updated Footer with solar panel pattern */
