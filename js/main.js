@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
-            console.log('Filter clicked:', this.getAttribute('data-filter');
+            console.log('Filter clicked:', this.getAttribute('data-filter')); // Fixed missing closing parenthesis
             
             // Remove active class from all buttons
             filterButtons.forEach(btn => {
@@ -208,6 +208,16 @@ document.addEventListener('DOMContentLoaded', () => {
             videoContainer.classList.remove('playing');
         });
     }
+
+    // Check all images on page load to ensure they're loading correctly
+    const allImages = document.querySelectorAll('img');
+    
+    allImages.forEach(img => {
+        img.addEventListener('error', function() {
+            console.error('Failed to load image:', this.src);
+            // You can implement fallback behavior here
+        });
+    });
 });
 
 // Header scroll effect
