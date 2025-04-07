@@ -1,19 +1,18 @@
 /**
  * Simple modal-style card expansion system
  */
-/* Basic card styles */
+/* Basic card styles with auto-scaling heights */
 .flip-card {
   position: relative;
-  min-height: 480px; /* Increased from 380px */
   height: auto; /* Allow height to be determined by content */
-  margin-bottom: 15px;
+  margin-bottom: 30px; /* Increased bottom margin for better spacing between cards */
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   overflow: hidden;
 }
 
-/* Card inner structure */
+/* Card inner structure - full height flex container */
 .flip-card-inner {
   width: 100%;
   height: 100%;
@@ -21,23 +20,57 @@
   flex-direction: column;
 }
 
-.flip-card-front, .flip-card-back {
-  width: 100%;
-  border-radius: 8px;
-}
-
-/* Front card styling */
 .flip-card-front {
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-height: 480px; /* Increased from 450px */
+  position: relative;
+  padding-bottom: 70px; /* Space for absolute positioned buttons */
 }
 
-/* Project image in cards - increased height */
+/* Project image with aspect ratio instead of fixed height */
 .flip-card-front .project-image {
-  height: 400px; /* Increased from 360px */
+  width: 100%;
+  aspect-ratio: 16/9; /* Use aspect ratio instead of fixed height */
   overflow: hidden;
+}
+
+.flip-card-front .project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Ensure image wrapper maintains aspect ratio */
+.project-card.side-by-side .image-wrapper {
+  width: 100%;
+  aspect-ratio: 16/9;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Title and content spacing */
+.project-title {
+  padding: 22px 22px 10px;
+}
+
+/* Paragraph text with proper spacing but no fixed bottom padding */
+.project-card p {
+  padding: 0 22px;
+  margin-bottom: 20px;
+  color: var(--light-text);
+}
+
+/* Links positioned at the bottom with clean spacing */
+.project-links {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  padding: 0 22px;
+  display: flex;
+  gap: 12px;
+  z-index: 5;
 }
 
 /* Back content hidden by default */
@@ -165,19 +198,6 @@
   content: none !important;
 }
 
-/* Links container - positioned further from content */
-.project-links {
-  position: absolute;
-  bottom: 35px; /* Increased from 25px */
-  left: 0;
-  width: 100%;
-  padding: 0 22px;
-  display: flex;
-  gap: 12px;
-  z-index: 5;
-  background: transparent;
-}
-
 /* Make modal back links position relative */
 .modal-content .project-links {
   position: relative;
@@ -185,13 +205,6 @@
   left: auto;
   padding: 20px 0 0;
   margin-top: 20px;
-}
-
-/* Create more space for text content */
-.project-card p {
-  padding: 0 22px;
-  margin-bottom: 100px !important; /* Increased from 80px */
-  color: var(--light-text);
 }
 
 /* Back button styling */
@@ -243,4 +256,30 @@
 
 .modal-content .gallery-images img {
   max-height: 500px; /* Increased from 250px (doubled) */
+}
+
+/* Modal content responsive adjustments */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    padding: 30px 20px; /* Reduced padding on mobile */
+  }
+  
+  /* Adjust image aspect ratio on smaller screens */
+  .flip-card-front .project-image {
+    aspect-ratio: 4/3; /* Slightly taller on mobile */
+  }
+}
+
+/* For very small screens, stack the link buttons */
+@media (max-width: 480px) {
+  .project-links {
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 10px;
+  }
+  
+  .flip-card-front {
+    padding-bottom: 100px; /* Increase padding for stacked buttons */
+  }
 }
