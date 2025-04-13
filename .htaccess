@@ -1,0 +1,31 @@
+# Prevent unnecessary redirects
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  
+  # Redirect from www to non-www (choose one consistent URL format)
+  RewriteCond %{HTTP_HOST} ^www\.vinayaacharekar\.com [NC]
+  RewriteRule ^(.*)$ https://vinayaacharekar.com/$1 [L,R=301]
+  
+  # Prevent index.html redirects
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+  RewriteRule ^index\.html$ / [R=301,L]
+  
+  # Don't redirect fragment identifiers (anchor links)
+  RewriteCond %{REQUEST_URI} !#
+  
+  # Handle SPA paths to avoid 404s
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Cache control
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  ExpiresByType text/html "access plus 1 week"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+</IfModule>
